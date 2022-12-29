@@ -1,2 +1,7 @@
 ---
 # tasks file for arch_disk_setup
+
+- name: Decide whether to partition the disk
+  include_tasks:
+    file: automatic.yml
+  when: provision == true

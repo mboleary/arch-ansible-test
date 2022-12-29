@@ -1,0 +1,10 @@
+# Main playbook
+- name: Install Base System
+  hosts: provision
+  remote_user: root
+  tags:
+    - never
+    - bootstrap
+  tasks:
+    - import_role:
+        name: arch_disk_setup

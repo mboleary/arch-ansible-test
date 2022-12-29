@@ -1,0 +1,5 @@
+# Kicks off automatic process of partitioning disks
+
+- name: test
+  debug:
+    msg: test
