@@ -29,4 +29,4 @@
 
 - include_role:
     public: yes
-    name: "arch_disk_setup/flows/{{ disksetup_flow }}"
+    name: "disk_setup/flows/{{ disksetup_flow }}"
