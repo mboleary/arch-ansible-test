@@ -1,7 +1,7 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+This role installs the base system as part of the provisioning process
 
 Requirements
 ------------

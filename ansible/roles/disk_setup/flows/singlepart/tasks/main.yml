@@ -8,3 +8,4 @@
 - include_tasks: partitioning.yml
 - include_tasks: postpartitioning.yml
 - include_tasks: mkfs.yml
+- include_tasks: mount.yml

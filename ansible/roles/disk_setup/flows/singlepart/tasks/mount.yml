@@ -1,0 +1,26 @@
+# Mounts disks using the singlepart flow
+
+- debug:
+    var: singlepart_esp_device
+- debug:
+    var: singlepart_root_device
+
+- name: Mount the root partition
+  mount:
+    state: mounted
+    src: "{{ singlepart_root_device }}"
+    path: "{{ rootfs_mountpoint }}"
+    fstype: ext4
+
+- name: Create /boot/efi mountpoint
+  file:
+    state: directory
+    name: "{{ rootfs_mountpoint }}/boot/efi"
+    recurse: yes
+
+- name: Mount the ESP
+  mount:
+    state: mounted
+    src: "{{ singlepart_esp_device }}"
+    path: "{{ rootfs_mountpoint }}/boot/efi"
+    fstype: vfat
