@@ -1,5 +1,19 @@
 # Generate filesystems on disk
 
-- name: test
-  debug:
-    msg: Run mkfs
+- name: Set partitioning variables
+  set_fact:
+    singlepart_esp_device: "{{ part_info.disk.dev }}{{ part_info.partitions[0].num }}"
+    singlepart_root_device: "{{ part_info.disk.dev }}{{ part_info.partitions[1].num }}"
+- debug:
+    var: singlepart_esp_device
+- debug:
+    var: singlepart_root_device
+
+- name: Create ESP filesystem
+  community.general.filesystem:
+    dev: "{{ singlepart_esp_device }}"
+    fstype: vfat
+- name: Create Root filesystem
+  community.general.filesystem:
+    dev: "{{ singlepart_root_device }}"
+    fstype: ext4
