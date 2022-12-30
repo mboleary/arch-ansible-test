@@ -1,1 +1,5 @@
 # Sets variables for where to setup chroot for later in the process
+
+- name: test
+  debug:
+    msg: Manual!

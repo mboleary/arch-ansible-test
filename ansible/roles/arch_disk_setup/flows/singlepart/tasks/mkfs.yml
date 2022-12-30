@@ -1,0 +1,5 @@
+# Generate filesystems on disk
+
+- name: test
+  debug:
+    msg: Run mkfs

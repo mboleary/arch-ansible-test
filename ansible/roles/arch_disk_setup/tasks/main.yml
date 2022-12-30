@@ -1,7 +1,21 @@
 ---
 # tasks file for arch_disk_setup
 
-- name: Decide whether to partition the disk
-  include_tasks:
-    file: automatic.yml
-  when: provision == true
+# - name: Check for Automatic Disk Partitioning
+#   include_tasks:
+#     file: automatic.yml
+#   when: partition == true
+# - name: Manual Disk Partitioning
+#   include_tasks:
+#     file: manual.yml
+#   when: partition == false
+
+- name: Kickoff disk partitioning process
+  tags:
+    - partition
+  include_tasks: >-
+    {%- if partition | default(false) -%}
+      automatic.yml
+    {%- else -%}
+      manual.yml
+    {%- endif -%}

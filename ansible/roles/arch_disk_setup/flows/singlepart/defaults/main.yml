@@ -1,0 +1,5 @@
+# Default variables for singlepart
+
+rootfs_mountpoint: /mnt
+
+part_esp_size: 512 # in megabytes

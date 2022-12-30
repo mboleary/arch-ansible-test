@@ -1,0 +1,5 @@
+# Variables for the provision group
+ansible_ssh_pass: arch
+temp_root_pw: arch
+temp_fde_pw: archtest
+partition: false

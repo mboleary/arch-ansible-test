@@ -1,0 +1,10 @@
+# Partitions the disk using a single ext4 partition
+
+- name: Partitioning disk as a single ext4 partition...
+  debug:
+    msg: test
+
+- include_tasks: prepartitioning.yml
+- include_tasks: partitioning.yml
+- include_tasks: postpartitioning.yml
+- include_tasks: mkfs.yml

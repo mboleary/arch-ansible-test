@@ -1,3 +1,15 @@
 ---
 # defaults file for arch_disk_setup
 
+partition_options:
+  swap: true
+  swap_size: 8
+  separate_home: true
+  encrypt: true
+temp_fde_pw: archtest
+partition: false
+
+## Internals
+
+# Determines what partitioning flow to use
+disksetup_flow: singlepart

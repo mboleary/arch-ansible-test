@@ -1,0 +1,5 @@
+# pre-partitioning steps
+
+- name: test
+  debug:
+    msg: Run pre-partitioning

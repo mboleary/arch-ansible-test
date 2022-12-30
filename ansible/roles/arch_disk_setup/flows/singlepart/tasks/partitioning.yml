@@ -1,0 +1,5 @@
+# Partition the disk
+
+- name: test
+  debug:
+    msg: Run partitioning steps

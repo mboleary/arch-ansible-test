@@ -1,0 +1,5 @@
+# Post-partitioning steps
+
+- name: test
+  debug:
+    msg: Run post-partitioning steps

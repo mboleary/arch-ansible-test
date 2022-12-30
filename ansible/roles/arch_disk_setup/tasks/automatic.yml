@@ -1,5 +1,32 @@
 # Kicks off automatic process of partitioning disks
 
+- name: Evaluate if lvm is appropriate
+  set_fact:
+    disksetup_flow: lvm
+  when: disksetup_flow is not defined and partition_options.encrypt == false and partition_options.separate_home == true
+
+- name: Evaluate if crypt_lvm is appropriate
+  set_fact:
+    disksetup_flow: crypt_lvm
+  when: disksetup_flow is not defined and partition_options.encrypt == true and partition_options.separate_home == true
+
 - name: test
   debug:
-    msg: test
+    var: disksetup_flow
+
+- name: test1
+  debug:
+    var: namespace
+
+# - name: Given the partitioning parameters, decide what method to use
+#   include_tasks: >-
+#     {% if partition_options.encrypt==false and partition_options.separate_home == true %}
+#       lvm/main.yml
+#     {% elif partition_options.encrypt == true and partition_options.separate_home == true %}
+#       crypt_lvm/main.yml
+#     {% else %}
+#       singlepart/main.yml
+
+- include_role:
+    public: yes
+    name: "arch_disk_setup/flows/{{ disksetup_flow }}"
