@@ -1,2 +1,45 @@
 ---
 # tasks file for arch_provision
+
+- name: Install base packages
+  import_role:
+    name: arch_provision/subtasks/pacstrap
+  vars:
+    packages:
+      # Base system
+      - base
+      - linux
+      - linux-firmware
+      # Necessary extras
+      - e2fsprogs
+      - exfat-utils
+      - iproute2
+      - dhcpcd
+      - neovim
+      - nano
+      - grub
+      - efibootmgr
+      - networkmanager
+      - man-db
+      - man-pages
+      - sudo
+      - openssh
+
+- import_role:
+    name: arch_provision/subtasks/genfstab
+
+- import_role:
+    name: arch_provision/subtasks/locale
+
+- import_role:
+    name: arch_provision/subtasks/hostname
+
+- import_role:
+    name: arch_provision/subtasks/copy_keys
+
+- name: Enable services on installed system
+  command: arch-chroot {{ rootfs_mountpoint | quote }}
+    systemctl enable {{ item | quote }}
+  loop:
+    - sshd
+    - NetworkManager

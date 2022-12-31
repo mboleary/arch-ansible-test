@@ -1,0 +1,28 @@
+# Copies SSH keys to enable phase 2 of the provisioning process to complete
+
+- name: Create root's .ssh
+  file:
+    state: directory
+    path:  "{{ rootfs_mountpoint }}/root/.ssh/"
+
+- name: Check for root's autorized keys
+  stat:
+    path: /root/.ssh/authorized_keys
+  register: _root_auth_keys
+
+- name: Copy root's authorized keys
+  copy:
+    remote_src: yes
+    src: /root/.ssh/authorized_keys
+    dest: "{{ rootfs_mountpoint }}/root/.ssh/"
+    mode: "preserve"
+  when: _root_auth_keys.stat.exists == true
+
+- name: Create /etc/ssh on chroot
+  file:
+    state: directory
+    path:  "{{ rootfs_mountpoint }}/etc/ssh/"
+
+- name: Copy ssh host keys
+  shell: cp -vp /etc/ssh/ssh_host_*_key /etc/ssh/ssh_host_*_key.pub
+      {{ rootfs_mountpoint | quote }}/etc/ssh/

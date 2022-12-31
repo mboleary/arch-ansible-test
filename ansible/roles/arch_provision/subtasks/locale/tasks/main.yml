@@ -1,0 +1,20 @@
+# Sets some locale information in a chroot
+
+- name: Set the timezone
+  command: "arch-chroot {{ rootfs_mountpoint | quote }} ln -sf /usr/share/zoneinfo/{{ timezone }} /etc/localtime"
+
+- name: Run hwclock
+  command: "arch-chroot {{ rootfs_mountpoint | quote }} hwclock --systohc"
+
+- name: Uncomment locales
+  lineinfile:
+    path: "{{ rootfs_mountpoint }}/etc/locale.gen"
+    backrefs: true
+    regexp: "^#{{item}}"
+    line: "{{item}}"
+  with_items:
+    - en_US.UTF-8 UTF-8 
+    - en_US ISO-8859-1
+
+- name: Run localegen
+  command: "arch-chroot {{ rootfs_mountpoint | quote }} locale-gen"

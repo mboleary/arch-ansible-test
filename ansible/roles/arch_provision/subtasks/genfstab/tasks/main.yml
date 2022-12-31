@@ -1,0 +1,4 @@
+# Generates the fstab file
+
+- name: Generating fstab
+  command: genfstab -U {{ rootfs_mountpoint | quote }} >> {{ rootfs_mountpoint | quote }}/etc/fstab

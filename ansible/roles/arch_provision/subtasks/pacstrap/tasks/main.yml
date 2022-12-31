@@ -1,0 +1,7 @@
+# Runs pacstrap for installing base system packages
+
+- command: >
+    pacstrap -K {{ rootfs_mountpoint | quote }} --needed
+    {% for pkg in packages %}
+      {{ pkg | quote }}
+    {% endfor %}

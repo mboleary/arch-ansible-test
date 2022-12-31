@@ -1,2 +1,4 @@
 ---
 # defaults file for arch_provision
+
+timezone: "UTC"

@@ -1,0 +1,4 @@
+- name: set hostname
+  copy:
+    dest: "{{ rootfs_mountpoint }}/etc/hostname"
+    content: "{{ hostname }}"
