@@ -37,16 +37,21 @@
 - import_role:
     name: arch_provision/subtasks/copy_keys
 
-- name: Copy rc.local service
-  copy:
-    dest: "{{ rootfs_mountpoint }}/etc/systemd/system/rc-local.service"
-    src: "../files/rc-local.service"
+# - name: Copy rc.local service
+#   copy:
+#     dest: "{{ rootfs_mountpoint }}/etc/systemd/system/rc-local.service"
+#     src: "../files/rc-local.service"
 
-- name: Copy default rc.local script
+# - name: Copy default rc.local script
+#   copy:
+#     dest: "{{ rootfs_mountpoint }}/etc/rc.local"
+#     src: "../files/rc.local"
+#     mode: u=rwx
+
+- name: Copy /etc/issue replacement
   copy:
-    dest: "{{ rootfs_mountpoint }}/etc/rc.local"
-    src: "../files/rc.local"
-    mode: u=rwx
+    dest: "{{ rootfs_mountpoint }}/etc/issue"
+    src: "../files/issue"
 
 - name: Enable services on installed system
   command: arch-chroot {{ rootfs_mountpoint | quote }}
@@ -54,4 +59,4 @@
   loop:
     - sshd
     - NetworkManager
-    - rc-local
+    # - rc-local
