@@ -1,0 +1,9 @@
+[Unit]
+Description=/etc/rc.local compatibility
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /etc/rc.local
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Adds IP Address to /etc/issue, which is what's displayed at the top of the getty login prompt
+IP=$(ip -4 addr | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
+echo 'Arch Linux \r (\l)' > /etc/issue
+echo 'IP address:' >> /etc/issue
+echo "$IP" >> /etc/issue
+
+exit 0
