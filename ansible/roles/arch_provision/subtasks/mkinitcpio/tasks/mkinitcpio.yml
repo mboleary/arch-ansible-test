@@ -1,0 +1,10 @@
+# Generate the initcpio
+- name: Update the mkinitcpio.conf hooks
+  lineinfile:
+    backup: true
+    backrefs: true
+    path: "{{ rootfs_mountpoint }}/etc/mkinitcpio.conf"
+    regexp: '^HOOKS=\(([a-z ]*)\)'
+    line: 'HOOKS=(\1 {{ mkinitcpio_hooks | join('' '') }})'
+- name: Generate initcpio
+  command: "arch-chroot {{ rootfs_mountpoint }} mkinitcpio -P"

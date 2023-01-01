@@ -1,0 +1,7 @@
+---
+# tasks file for mkinitcpio
+
+- name: Check if initcpio needs to be generated
+  include_tasks:
+    file: mkinitcpio.yml
+  when: "mkinitcpio_gen"

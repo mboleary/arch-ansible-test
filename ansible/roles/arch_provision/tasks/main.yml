@@ -29,6 +29,15 @@
       - tmux
       - git
       - xdg-user-dirs
+      - python
+
+- name: Install additional specified packages
+  import_role: 
+    name: arch_provision/subtasks/pacstrap
+  tags:
+    - base_install
+  vars:
+    packages: "{{ bootstrap_packages }}"
 
 - import_role:
     name: arch_provision/subtasks/genfstab
@@ -53,14 +62,14 @@
 - name: symlink vim to nvim
   file:
     state: link
-    src: /usr/bin/nvim
-    dest: /usr/bin/vim
+    src: "{{ rootfs_mountpoint }}/usr/bin/nvim"
+    dest: "{{ rootfs_mountpoint }}/usr/bin/vim"
 
 - name: symlink vi to nvim
   file:
     state: link
-    src: /usr/bin/nvim
-    dest: /usr/bin/vi
+    src: "{{ rootfs_mountpoint }}/usr/bin/nvim"
+    dest: "{{ rootfs_mountpoint }}/usr/bin/vi"
 
 - name: Copy /etc/issue replacement
   copy:
@@ -75,6 +84,11 @@
   loop:
     - sshd
     - NetworkManager
-    # - rc-local
+  tags:
+    - base_install
+
+
+- import_role:
+    name: arch_provision/subtasks/mkinitcpio
   tags:
     - base_install

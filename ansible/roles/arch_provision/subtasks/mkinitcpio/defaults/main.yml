@@ -1,0 +1,5 @@
+---
+# defaults file for mkinitcpio
+
+mkinitcpio_gen: false
+mkinitcpio_hooks: []
