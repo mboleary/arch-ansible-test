@@ -1,10 +1,14 @@
 ---
 # tasks file for sddm
+- name: Reached sddm
+  debug:
+    msg: reached sddm
 
 - name: Install packages for SDDM
   pacman:
-    - sddm
-    - sddm-kcm
+    name:
+      - sddm
+      - sddm-kcm
 - name: Enable the sddm service
   service:
     name: sddm.service
