@@ -1,2 +1,7 @@
 ---
 # tasks file for postinstall
+
+- import_role:
+    name: postinstall/subtasks/users
+  tags:
+    - users

@@ -1,0 +1,35 @@
+---
+# tasks file for users
+
+- name: Create groups
+  group:
+    name: "{{ item }}"
+  loop: "{{ user_groups }}"
+
+- name: Create control user
+  user:
+    generate_ssh_key: true
+    groups:
+      - sudo
+      - sys
+      - wheel
+      - adm
+      - uucp
+    name: "{{ user_control_name }}"
+    # Lock account
+    password_lock: true
+
+- name: Create other users
+  user:
+    generate_ssh_key: "{{ item.generate_ssh_key | default(false) }}"
+    name: "{{ item.name }}"
+    # If password_hash not set, assume that the account should be locked
+    password_lock: "{{ item.password_hash is not defined }}"
+    password: "{{ item.password_hash }}"
+    groups: "{{ item.groups }}"
+  loop: "{{ users }}"
+
+- name: Lock root user
+  user:
+    name: "root"
+    password_lock: true

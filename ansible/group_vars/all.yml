@@ -1,0 +1,17 @@
+# Variables for all hosts
+
+users:
+- name: brady
+  sudo: true
+  admin: true
+  generate_ssh_key: true
+  password_hash: "{{ 'password' | password_hash('sha512') }}"
+  groups:
+    - sudo
+    - sys
+    - wheel
+    - adm
+    - uucp
+
+user_groups:
+- sudo

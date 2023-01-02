@@ -18,8 +18,9 @@
 - name: List facts for testing
   hosts: postinstall
   remote_user: root
+  tags:
+    - postinstall
   tasks:
-    - name: Ansible Facts
-      debug:
-        var: ansible_facts
+    - import_role:
+        name: postinstall
       
