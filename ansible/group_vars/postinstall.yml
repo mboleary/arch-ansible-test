@@ -1,0 +1,3 @@
+# Variables for the postinstall group
+## Ansible Configuration
+ansible_user: root

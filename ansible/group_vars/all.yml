@@ -1,5 +1,8 @@
 # Variables for all hosts
+## Ansible Configuration
+ansible_user: ansible
 
+## General Configuration
 users:
 - name: brady
   sudo: true

@@ -23,4 +23,17 @@
   tasks:
     - import_role:
         name: postinstall
-      
+- name: General Configuration
+  hosts: all
+  tags:
+    - config
+  tasks:
+    - debug:
+        msg: hellorld!
+
+
+# - name: Run updates
+#   hosts: all
+#   tags:
+#     - update
+#   tasks:

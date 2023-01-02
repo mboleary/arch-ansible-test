@@ -59,18 +59,6 @@
   tags:
     - base_install
 
-- name: symlink vim to nvim
-  file:
-    state: link
-    src: "{{ rootfs_mountpoint }}/usr/bin/nvim"
-    dest: "{{ rootfs_mountpoint }}/usr/bin/vim"
-
-- name: symlink vi to nvim
-  file:
-    state: link
-    src: "{{ rootfs_mountpoint }}/usr/bin/nvim"
-    dest: "{{ rootfs_mountpoint }}/usr/bin/vi"
-
 - name: Copy /etc/issue replacement
   copy:
     dest: "{{ rootfs_mountpoint }}/etc/issue"

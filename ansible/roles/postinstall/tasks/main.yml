@@ -1,5 +1,17 @@
 ---
-# tasks file for postinstall
+# tasks file for postinstall (as root)
+
+- name: symlink vim to nvim
+  file:
+    state: link
+    src: "/usr/bin/nvim"
+    dest: "/usr/bin/vim"
+
+- name: symlink vi to nvim
+  file:
+    state: link
+    src: "/usr/bin/nvim"
+    dest: "/usr/bin/vi"
 
 - import_role:
     name: postinstall/subtasks/users
@@ -9,3 +21,7 @@
     name: postinstall/subtasks/sudo
   tags:
     - sudo
+- import_role:
+    name: postinstall/subtasks/ssh_config
+  tags:
+    - ssh_config

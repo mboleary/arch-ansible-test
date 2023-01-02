@@ -1,0 +1,35 @@
+---
+# tasks file for ssh_config
+
+- name: Create control user's .ssh
+  file:
+    state: directory
+    path:  "/home/{{ user_control_name }}/.ssh"
+
+- name: Check for root's autorized keys
+  stat:
+    path: /root/.ssh/authorized_keys
+  register: _root_auth_keys
+
+- name: Copy existing root keys for control user
+  copy:
+    remote_src: yes
+    src: /root/.ssh/authorized_keys
+    dest: "/home/{{ user_control_name }}/.ssh/"
+    mode: "preserve"
+    owner: "ansible"
+    group: "ansible"
+  when: _root_auth_keys.stat.exists == true
+
+- name: Prevent root user from logging in over ssh
+  lineinfile:
+    backup: true
+    backrefs: false
+    path: /etc/ssh/sshd_config
+    regexp: '^#PermitRootLogin'
+    line: 'PermitRootLogin no'
+
+- name: Restart sshd
+  service:
+    name: sshd.service
+    state: restarted
