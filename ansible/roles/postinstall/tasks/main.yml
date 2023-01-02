@@ -25,3 +25,12 @@
     name: postinstall/subtasks/ssh_config
   tags:
     - ssh_config
+    
+## Tasks to run as non-root user
+- name: Install yay (aur helper)
+  become: true
+  become_user: "{{ user_control_name }}"
+  kewlfft.aur.aur:
+    name: yay
+    use: makepkg
+    state: present

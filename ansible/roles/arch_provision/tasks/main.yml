@@ -12,13 +12,11 @@
       - base
       - linux
       - linux-firmware
-      # Necessary extras
+      # Drivers and bootloader
       - e2fsprogs
       - exfat-utils
       - iproute2
       - dhcpcd
-      - neovim
-      - nano
       - grub
       - efibootmgr
       - networkmanager
@@ -26,11 +24,17 @@
       - man-pages
       - sudo
       - openssh
+      # Necessary extras
+      - fakeroot
+      - neovim
+      - nano
       - tmux
       - git
       - xdg-user-dirs
       - python
       - htop
+      ## Needed to install aur helper later
+      - base-devel
 
 - name: Install additional specified packages
   import_role: 
