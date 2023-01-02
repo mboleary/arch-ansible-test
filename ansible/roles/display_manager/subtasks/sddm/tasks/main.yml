@@ -1,0 +1,11 @@
+---
+# tasks file for sddm
+
+- name: Install packages for SDDM
+  pacman:
+    - sddm
+    - sddm-kcm
+- name: Enable the sddm service
+  service:
+    name: sddm.service
+    enabled: true

@@ -1,0 +1,5 @@
+---
+# defaults file for vmguest
+
+vm: false
+vm_backend: null

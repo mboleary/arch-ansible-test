@@ -1,0 +1,9 @@
+---
+# tasks file for display_manager
+
+- debug:
+    var: display_manager
+
+- name: Jump to subtask to install Display Manager
+  import_role: 
+    name: "display_manager/subtasks/{{ display_manager }}"

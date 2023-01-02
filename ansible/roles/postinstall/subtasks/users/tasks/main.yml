@@ -10,7 +10,7 @@
   user:
     generate_ssh_key: true
     groups:
-      - sudo
+      # - sudo
       - sys
       - wheel
       - adm

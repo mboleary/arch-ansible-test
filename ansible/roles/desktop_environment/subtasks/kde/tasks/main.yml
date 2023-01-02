@@ -1,0 +1,8 @@
+---
+# tasks file for kde
+
+- name: Install KDE packages
+  pacman:
+    name:
+      - plasma-meta
+      - kde-applications-meta

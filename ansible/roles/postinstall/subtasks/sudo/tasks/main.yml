@@ -9,3 +9,11 @@
     nopassword: false
     runas: ALL:ALL
     validation: required
+- name: Let ansible user have sudo access without typing in password
+  community.general.sudoers:
+    name: ansible
+    user: "{{ user_control_name }}"
+    commands: ALL
+    nopassword: true
+    runas: ALL:ALL
+    validation: required

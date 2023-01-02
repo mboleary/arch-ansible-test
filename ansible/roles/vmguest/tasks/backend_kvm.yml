@@ -1,0 +1,6 @@
+- name: Install QEMU/KVM Guest Additions
+  pacman:
+    name: 
+      - spice-vdagent
+      - qemu-guest-agent
+- include_tasks: guest_resize.yml

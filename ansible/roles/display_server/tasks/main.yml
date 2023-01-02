@@ -1,0 +1,19 @@
+---
+# tasks file for display_server
+
+- debug:
+    var: display_server
+
+- name: Install the xorg packages
+  pacman:
+    name:
+      - xorg
+      - xorg-apps
+      - xorg-fonts
+      # Only needed for my demo
+      # - xorg-twm
+      # - xorg-xinit
+      # - xorg-xclock
+      # - xterm
+      # - xorg-xeyes
+  when: display_server == "xorg"

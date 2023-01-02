@@ -1,0 +1,5 @@
+---
+# tasks file for vmguest
+
+- name: Goto specific backend handler for VM
+  include_tasks: "backend_{{ vm_backend }}.yml"

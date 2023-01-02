@@ -1,0 +1,10 @@
+- name: Install X11-specific packages for resizing
+  pacman:
+    name:
+      - xorg-xev
+      - xorg-xrandr
+- name: Autostart xev & xrandr to resize the screen
+  copy:
+    src: autoresizer.desktop
+    dest: /etc/xdg/autostart/
+    mode: "0644"

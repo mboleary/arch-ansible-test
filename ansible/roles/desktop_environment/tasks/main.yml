@@ -1,0 +1,9 @@
+# Desktop Environment
+
+- debug:
+    var: desktop_environment
+
+- name: Jump to desktop environment subtask
+  import_role:
+    name: "desktop_environment/subtasks/kde"
+    # name: "desktop_environment/subtasks/{{ desktop_environment }}"

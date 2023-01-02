@@ -9,12 +9,13 @@
     - never
     - bootstrap
   tasks:
-    # - import_role:
-    #     name: disk_setup
+    - import_role:
+        name: disk_setup
     - import_role:
         name: arch_provision
     - import_role:
         name: bootloader
+
 - name: List facts for testing
   hosts: postinstall
   remote_user: root
@@ -23,13 +24,30 @@
   tasks:
     - import_role:
         name: postinstall
-- name: General Configuration
-  hosts: all
+
+- name: VM Guest Additions
+  hosts: vm
+  become: true
   tags:
-    - config
+    - hardware
+    - vm
   tasks:
-    - debug:
-        msg: hellorld!
+    - import_role:
+        name: vmguest
+      when: vm == true
+
+- name: Graphical System Configuration
+  hosts: graphical
+  become: true
+  tags:
+    - graphical
+  tasks:
+    - import_role:
+        name: display_server
+    - import_role:
+        name: display_manager
+    - import_role:
+        name: desktop_environment
 
 
 # - name: Run updates

@@ -1,0 +1,11 @@
+- name: Start VirtualBox service
+  systemd:
+    name: vboxservice
+    state: started
+    enabled: yes
+
+- name: Enable QEMU guest agent
+  systemd:
+    name: qemu-guest-agent
+    state: stopped
+    enabled: yes
