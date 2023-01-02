@@ -1,0 +1,11 @@
+---
+# tasks file for sudo
+
+- name: Add sudo group configuration to the sudoers file
+  community.general.sudoers:
+    name: sudo_group
+    group: "{{ sudo_group }}"
+    commands: ALL
+    nopassword: false
+    runas: ALL:ALL
+    validation: required

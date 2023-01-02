@@ -5,3 +5,7 @@
     name: postinstall/subtasks/users
   tags:
     - users
+- import_role:
+    name: postinstall/subtasks/sudo
+  tags:
+    - sudo
