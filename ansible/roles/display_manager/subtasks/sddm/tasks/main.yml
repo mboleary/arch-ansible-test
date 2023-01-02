@@ -9,3 +9,23 @@
   service:
     name: sddm.service
     enabled: true
+
+- name: Create sddm config directory
+  file:
+    path: /etc/sddm.conf.d/
+    group: root
+    owner: root
+    state: directory
+
+- name: Copy User Config
+  copy:
+    src: users.conf
+    dest: /etc/sddm.conf.d/
+    mode: "0644"
+
+- name: Copy Theme Config if KDE is being used
+  copy:
+    src: kde_settings.conf
+    dest: /etc/sddm.conf.d/
+    mode: "0644"
+  when: desktop_environment is defined and desktop_environment == "kde"

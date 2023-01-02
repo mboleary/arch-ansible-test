@@ -30,6 +30,7 @@
       - git
       - xdg-user-dirs
       - python
+      - htop
 
 - name: Install additional specified packages
   import_role: 

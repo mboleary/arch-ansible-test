@@ -18,6 +18,7 @@
     name: "{{ user_control_name }}"
     # Lock account
     password_lock: true
+    comment: "Control User"
 
 - name: Create other users
   user:
@@ -27,6 +28,7 @@
     password_lock: "{{ item.password_hash is not defined }}"
     password: "{{ item.password_hash }}"
     groups: "{{ item.groups }}"
+    comment: "{{ item.comment }}"
   loop: "{{ users }}"
 
 - name: Lock root user

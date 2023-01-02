@@ -9,6 +9,7 @@ users:
   admin: true
   generate_ssh_key: true
   password_hash: "{{ 'password' | password_hash('sha512') }}"
+  comment: "Brady O'Leary"
   groups:
     - sudo
     - sys

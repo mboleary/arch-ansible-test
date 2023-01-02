@@ -3,4 +3,5 @@
     name: 
       - spice-vdagent
       - qemu-guest-agent
+      - xf86-video-qxl
 - include_tasks: guest_resize.yml
