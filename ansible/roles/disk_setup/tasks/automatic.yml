@@ -18,6 +18,15 @@
   debug:
     var: namespace
 
+- name: Set partitioning naming scheme
+  set_fact:
+    disk_setup_partition_naming_scheme: "p"
+  when: partition_options.disk is regex("[a-z0-9]*[0-9]")
+
+- name: test partitioning naming scheme
+  debug:
+    var: disk_setup_partition_naming_scheme
+
 # - name: Given the partitioning parameters, decide what method to use
 #   include_tasks: >-
 #     {% if partition_options.encrypt==false and partition_options.separate_home == true %}

@@ -1,2 +1,4 @@
 ---
 # defaults file for kde
+
+kde_install_apps: false

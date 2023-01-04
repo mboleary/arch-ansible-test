@@ -3,6 +3,28 @@
 
 - name: Install KDE packages
   pacman:
+    extra_args: "--ignore discover"
     name:
       - plasma-meta
+      - plasma-desktop
+      - kde-system-meta
+      - kde-utilities-meta
+      - kde-graphics-meta
+      - ffmpegthumbs
+      - audiocd-kio
+      - kdeconnect
+      - kdenetwork-filesharing
+      - kio-extras
+      - kio-gdrive
+      - kio-zeroconf
+      - dolphin-plugins
+
+- name: Install kde apps
+  pacman:
+    name:
       - kde-applications-meta
+  when: kde_install_apps == true
+
+- name: Uninstall Discover (it's not usable on arch anyhow)
+  pacman:
+    state: removed

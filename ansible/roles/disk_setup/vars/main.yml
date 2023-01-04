@@ -1,2 +1,4 @@
 ---
 # vars file for arch_disk_setup
+
+disk_setup_partition_naming_scheme: ""
