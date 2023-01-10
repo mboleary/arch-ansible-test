@@ -20,6 +20,12 @@ ansible-galaxy collection install -r requirements.yml
 
 ## Running
 
+Provisioning is split into 2 groups; `bootstrap` and `ansible`.
+
+If creating a VM for testing, ensure that it's configured to use UEFI instead of BIOS.
+### Bootstrap
+This collection is meant to provision a system from nothing, and get it into a usable state.
+
 Before the playbook can be run on a fresh system, the following must be done:
 
 1. Run `ssh-copy-id root@<hostname>` to copy the ssh keys to the host
@@ -43,3 +49,7 @@ ansible-playbook ./site.yml -i hosts.yml --tags postinstall
 ```
 
 At this point, the system should be ready for use in the main playbook. It will have 2 users added; your user account, and a control user named `ansible`. Both of these users have root access via sudo, and the control user is only able to login using the ssh keys from the ansible host.
+
+### Ansible
+This collection is meant to broadly configure a bootstrapped system, meaning that these tasks will do basic maintenance, including updates, checking disk health, etc. These tasks are also responsible for installing packages to configure a system in a particular way.
+

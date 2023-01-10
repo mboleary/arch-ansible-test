@@ -3,7 +3,7 @@
 
 - name: Install KDE packages
   pacman:
-    extra_args: "--ignore discover"
+    # extra_args: "--ignore discover"
     name:
       - plasma-meta
       - plasma-desktop
@@ -28,3 +28,6 @@
 - name: Uninstall Discover (it's not usable on arch anyhow)
   pacman:
     state: removed
+    name:
+      - discover
+      - plasma-meta
