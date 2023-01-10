@@ -14,3 +14,12 @@
         name: arch_provision
     - import_role:
         name: bootloader
+
+- name: List facts for testing
+  hosts: postinstall
+  remote_user: root
+  tags:
+    - postinstall
+  tasks:
+    - import_role:
+        name: postinstall

@@ -1,15 +1,5 @@
 # Main playbook
 
-
-- name: List facts for testing
-  hosts: postinstall
-  remote_user: root
-  tags:
-    - postinstall
-  tasks:
-    - import_role:
-        name: postinstall
-
 - name: VM Guest Additions
   hosts: vm
   become: true
