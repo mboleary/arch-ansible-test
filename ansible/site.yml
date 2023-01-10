@@ -1,20 +1,5 @@
 # Main playbook
-- name: Install Base System
-  hosts: provision
-  remote_user: root
-  vars:
-    # temporary
-    rootfs_mountpoint: /mnt
-  tags:
-    - never
-    - bootstrap
-  tasks:
-    - import_role:
-        name: disk_setup
-    - import_role:
-        name: arch_provision
-    - import_role:
-        name: bootloader
+
 
 - name: List facts for testing
   hosts: postinstall

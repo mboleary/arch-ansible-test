@@ -4,5 +4,5 @@
 - name: Install grub in chroot
   command: "arch-chroot {{ rootfs_mountpoint }} grub-install --target={{ bootloader_target }} --efi-directory={{ bootloader_efi_directory }} --bootloader={{ bootloader_id }}"
 
-- name: Generage grub.cfg in chroot
+- name: Generate grub.cfg in chroot
   command: "arch-chroot {{ rootfs_mountpoint }} grub-mkconfig -o /boot/grub/grub.cfg"
