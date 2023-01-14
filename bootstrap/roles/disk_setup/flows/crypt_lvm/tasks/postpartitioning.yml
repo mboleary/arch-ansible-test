@@ -2,21 +2,58 @@
 
 - name: Set partitioning variables
   set_fact:
-    singlepart_esp_device: "{{ part_info.disk.dev }}{{ disk_setup_partition_naming_scheme }}{{ part_info.partitions[0].num }}"
-    singlepart_luks_device: "{{ part_info.disk.dev }}{{ disk_setup_partition_naming_scheme }}{{ part_info.partitions[1].num }}"
+    cryptlvm_esp_device: "{{ part_info.disk.dev }}{{ disk_setup_partition_naming_scheme }}{{ part_info.partitions[0].num }}"
+    cryptlvm_luks_device: "{{ part_info.disk.dev }}{{ disk_setup_partition_naming_scheme }}{{ part_info.partitions[1].num }}"
 
 
 ## Setup encryption
 - name: Setup crypt/luks
   community.crypto.luks_device:
     state: present
-    device: "{{ singlepart_luks_device }}"
+    device: "{{ cryptlvm_luks_device }}"
     passphrase: "{{ temp_fde_pw }}"
     label: "{{ crypt_label }}"
 
 - name: Open Crypt
   community.crypto.luks_device:
     state: opened
-    device: "{{ singlepart_luks_device }}"
+    device: "{{ cryptlvm_luks_device }}"
     passphrase: "{{ temp_fde_pw }}"
     name: cryptlvm
+
+## Configure logical volumes
+
+## https://docs.ansible.com/ansible/latest/collections/community/general/lvg_module.html
+
+- name: Create physical volume and volume group in crypt
+  community.general.lvg:
+    vg: " {{ volgroup_name }}"
+    pvs: "/dev/mapper/{{ crypt_label }}"
+    state: present
+
+## https://docs.ansible.com/ansible/latest/collections/community/general/lvol_module.html#ansible-collections-community-general-lvol-module
+
+- name: Create swap volume
+  community.general.lvol:
+    size: "{{ swap_size }}"
+    vg: "{{ volgroup_name }}"
+    lv: swap
+
+- name: Create root volume
+  community.general.lvol:
+    size: "{{ root_size }}"
+    vg: "{{ volgroup_name }}"
+    lv: root
+
+- name: Create home volume
+  community.general.lvol:
+    size: "{{ home_size }}"
+    vg: "{{ volgroup_name }}"
+    lv: home
+
+## This is recommended in the documentation for ext4 volumes
+- name: Reduce last volume size by 256MiB
+  community.general.lvol:
+    size: "-256M"
+    vg: "{{ volgroup_name }}"
+    lv: home

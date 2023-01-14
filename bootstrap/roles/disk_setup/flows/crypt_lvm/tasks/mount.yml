@@ -1,0 +1,38 @@
+# Mounts disks using the cryptlvm flow
+
+- name: Mount the root partition
+  mount:
+    state: mounted
+    src: "{{ cryptlvm_root_mapper }}"
+    path: "{{ rootfs_mountpoint }}"
+    fstype: ext4
+
+- name: Create /boot/efi mountpoint
+  file:
+    state: directory
+    name: "{{ rootfs_mountpoint }}/boot/efi"
+    recurse: yes
+
+- name: Mount the ESP
+  mount:
+    state: mounted
+    src: "{{ cryptlvm_esp_device }}"
+    path: "{{ rootfs_mountpoint }}/boot/efi"
+    fstype: vfat
+
+- name: Create /home mountpoint
+  file:
+    state: directory
+    name: "{{ rootfs_mountpoint }}/home"
+    recurse: yes
+
+- name: Mount the home partition
+  mount:
+    state: mounted
+    src: "{{ cryptlvm_home_mapper }}"
+    path: "{{ rootfs_mountpoint }}/boot/efi"
+    fstype: vfat
+
+- name: Enable the swap partition
+  command: "swapon {{ cryptlvm_swap_mapper }}"
+  register: swapon

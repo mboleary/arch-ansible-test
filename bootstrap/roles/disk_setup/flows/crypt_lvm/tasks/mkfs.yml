@@ -1,18 +1,24 @@
 # Generate filesystems on disk
-## https://wiki.archlinux.org/title/dm-crypt/Encrypting_an_entire_system#LVM_on_LUKS
+- name: Set partitioning variables
+  set_fact:
+    cryptlvm_esp_device: "{{ part_info.disk.dev }}{{ disk_setup_partition_naming_scheme }}{{ part_info.partitions[0].num }}"
+    cryptlvm_swap_mapper: "/dev/{{ volgroup_name }}/swap"
+    cryptlvm_root_mapper: "/dev/{{ volgroup_name }}/root"
+    cryptlvm_home_mapper: "/dev/{{ volgroup_name }}/home"
 
-## https://docs.ansible.com/ansible/latest/collections/community/general/lvg_module.html
-
-- name: Create physical volume and volume group in crypt
-  community.general.lvg:
-    vg: " {{ volgroup_name }}"
-    pvs: "/dev/mapper/{{ crypt_label }}"
-    state: present
-
-## https://docs.ansible.com/ansible/latest/collections/community/general/lvol_module.html#ansible-collections-community-general-lvol-module
-
-- name: Create swap volume
-
-- name: Create root volume
-
-- name: Create home volume
+- name: Create ESP filesystem
+  community.general.filesystem:
+    dev: "{{ cryptlvm_esp_device }}"
+    fstype: vfat
+- name: Create Root filesystem
+  community.general.filesystem:
+    dev: "{{ cryptlvm_root_mapper }}"
+    fstype: ext4
+- name: Create Home filesystem
+  community.general.filesystem:
+    dev: "{{ cryptlvm_home_mapper }}"
+    fstype: ext4
+- name: Create Swap
+  community.general.filesystem:
+    dev: "{{ cryptlvm_home_mapper }}"
+    fstype: swap
