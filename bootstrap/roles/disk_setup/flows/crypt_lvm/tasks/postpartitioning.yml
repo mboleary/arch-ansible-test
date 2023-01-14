@@ -2,7 +2,7 @@
 
 - name: Set partitioning variables
   set_fact:
-    cryptlvm_esp_device: "{{ part_info.disk.dev }}{{ disk_setup_partition_naming_scheme }}{{ part_info.partitions[0].num }}"
+    
     cryptlvm_luks_device: "{{ part_info.disk.dev }}{{ disk_setup_partition_naming_scheme }}{{ part_info.partitions[1].num }}"
 
 
