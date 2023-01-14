@@ -1,5 +1,0 @@
-# Runs the process of partitioning the disks
-
-# We're going to partition the disk using an emcrypted lvm
-# See https://wiki.archlinux.org/title/dm-crypt/Encrypting_an_entire_system#LUKS_on_LVM
-

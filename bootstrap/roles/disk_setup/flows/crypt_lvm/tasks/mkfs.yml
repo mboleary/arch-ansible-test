@@ -1,1 +1,18 @@
 # Generate filesystems on disk
+## https://wiki.archlinux.org/title/dm-crypt/Encrypting_an_entire_system#LVM_on_LUKS
+
+## https://docs.ansible.com/ansible/latest/collections/community/general/lvg_module.html
+
+- name: Create physical volume and volume group in crypt
+  community.general.lvg:
+    vg: " {{ volgroup_name }}"
+    pvs: "/dev/mapper/{{ crypt_label }}"
+    state: present
+
+## https://docs.ansible.com/ansible/latest/collections/community/general/lvol_module.html#ansible-collections-community-general-lvol-module
+
+- name: Create swap volume
+
+- name: Create root volume
+
+- name: Create home volume

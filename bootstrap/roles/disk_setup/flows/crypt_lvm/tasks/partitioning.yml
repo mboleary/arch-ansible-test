@@ -1,1 +1,36 @@
 # Partition the disk
+
+- name: Set the disk label to GPT
+  community.general.parted:
+    device: "{{ partition_options.disk }}"
+    label: gpt
+    number: 1
+- name: Create ESP partition
+  community.general.parted:
+    device: "{{ partition_options.disk }}"
+    label: gpt
+    state: present
+    number: 1
+    name: ESP
+    flags:
+      - esp
+    part_start: "{{ 1024 * 1024 }}B"
+    # Convert Megabytes into bytes, add beginning spacer
+    part_end: "{{ part_esp_size | int * (1024 * 1024) + (1024 * 1024) - 1 }}B"
+- name: Create crypt/lvm partition
+  community.general.parted:
+    device: "{{ partition_options.disk }}"
+    label: gpt
+    state: present
+    number: 2
+    flags:
+      - lvm
+    # Convert Megabytes into bytes, add beginning spacer and previous size
+    part_start: "{{ part_esp_size | int * (1024 * 1024) + (1024 * 1024) }}B"
+    part_type: primary
+
+- name: Store partition information
+  community.general.parted: "device={{ partition_options.disk }} unit=MiB"
+  register: part_info
+- debug:
+    var: part_info

@@ -1,1 +1,22 @@
 # Post-partitioning steps
+
+- name: Set partitioning variables
+  set_fact:
+    singlepart_esp_device: "{{ part_info.disk.dev }}{{ disk_setup_partition_naming_scheme }}{{ part_info.partitions[0].num }}"
+    singlepart_luks_device: "{{ part_info.disk.dev }}{{ disk_setup_partition_naming_scheme }}{{ part_info.partitions[1].num }}"
+
+
+## Setup encryption
+- name: Setup crypt/luks
+  community.crypto.luks_device:
+    state: present
+    device: "{{ singlepart_luks_device }}"
+    passphrase: "{{ temp_fde_pw }}"
+    label: "{{ crypt_label }}"
+
+- name: Open Crypt
+  community.crypto.luks_device:
+    state: opened
+    device: "{{ singlepart_luks_device }}"
+    passphrase: "{{ temp_fde_pw }}"
+    name: cryptlvm

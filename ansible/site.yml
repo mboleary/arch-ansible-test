@@ -16,13 +16,10 @@
   become: true
   tags:
     - graphical
-  tasks:
-    - import_role:
-        name: display_server
-    - import_role:
-        name: display_manager
-    - import_role:
-        name: desktop_environment
+  roles:
+    - display_server
+    - display_manager
+    - desktop_environment
 
 
 # - name: Run updates

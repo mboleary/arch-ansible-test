@@ -1,1 +1,5 @@
 # Defaults for Partitioning with encrypted lvm
+
+volgroup_name: arch_test_vol_group
+crypt_label: cryptlvm
+# crypt_cipher: 

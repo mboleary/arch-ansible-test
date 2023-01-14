@@ -1,0 +1,10 @@
+# Runs the process of partitioning the disks
+
+# We're going to partition the disk using an emcrypted lvm
+# See https://wiki.archlinux.org/title/dm-crypt/Encrypting_an_entire_system#LVM_on_LUKS
+
+- include_tasks: prepartitioning.yml
+- include_tasks: partitioning.yml
+- include_tasks: postpartitioning.yml
+- include_tasks: mkfs.yml
+- include_tasks: mount.yml
