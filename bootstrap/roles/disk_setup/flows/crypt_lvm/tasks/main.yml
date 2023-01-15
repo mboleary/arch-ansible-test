@@ -17,5 +17,6 @@
       - encrypt
       - lvm2
     disksetup_bootloader_kernel_parameters:
-      - "ryptdevice=UUID={{ cryptlvm_uuid }}:cryptlvm"
+      - "cryptdevice=UUID={{ cryptlvm_uuid }}:cryptlvm"
       - "root=/dev/{{ volgroup_name }}/root"
+    mkinitcpio_gen: true

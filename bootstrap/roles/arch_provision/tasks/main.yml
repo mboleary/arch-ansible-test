@@ -36,6 +36,14 @@
       ## Needed to install aur helper later
       - base-devel
 
+- name: Install packages specified during disk setup
+  import_role: 
+    name: arch_provision/subtasks/pacstrap
+  tags:
+    - base_install
+  vars:
+    packages: "{{ disksetup_packages }}"
+
 - name: Install additional specified packages
   import_role: 
     name: arch_provision/subtasks/pacstrap

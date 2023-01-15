@@ -1,7 +1,7 @@
 ---
 # defaults file for bootloader
 
-disk_setup_bootloader_flags: []
+bootloader_kernel_parameters: []
 bootloader_target: x86_64-efi
 bootloader_efi_directory: /boot/efi
 bootloader_id: GRUB

@@ -1,7 +1,11 @@
 ---
 # tasks file for mkinitcpio
 
-- name: Check if initcpio needs to be generated
+- name: Gather all mkinitcpio hooks
+  set_fact:
+    mkinitcpio_hooks: "{{ mkinitcpio_hooks }} + {{ disksetup_mkinitcpio_hooks | default('[]') }}"
+
+- name: Check if initramfs needs to be generated
   include_tasks:
     file: mkinitcpio.yml
   when: "mkinitcpio_gen"
