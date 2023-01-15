@@ -3,15 +3,15 @@
 
 - name: Gather all kernel parameters
   set_fact:
-    bootloader_kernel_parameters: "{{ bootloader_kernel_parameters }} + {{ disksetup_bootloader_kernel_parameters | default('[]') }}"
+    bootloader_kernel_parameters: "{{ bootloader_kernel_parameters + (disksetup_bootloader_kernel_parameters | default('[]')) }}"
 
 - name: Update the default grub kernel parameters
   lineinfile:
     backup: true
     backrefs: true
     path: "{{ rootfs_mountpoint }}/etc/default/grub"
-    regexp: '^GRUB_CMDLINE_LINUX=\(([a-z0-9A-Z=/:\. ]*)\)'
-    line: 'GRUB_CMDLINE_LINUX=(\1 {{ bootloader_kernel_parameters | join('' '') }})'
+    regexp: '^GRUB_CMDLINE_LINUX=\"([a-z0-9A-Z=/:\. ]*)\"'
+    line: 'GRUB_CMDLINE_LINUX="\1 {{ bootloader_kernel_parameters | join('' '') }}"'
 
 - name: Install grub in chroot
   command: "arch-chroot {{ rootfs_mountpoint }} grub-install --target={{ bootloader_target }} --efi-directory={{ bootloader_efi_directory }} --bootloader={{ bootloader_id }}"

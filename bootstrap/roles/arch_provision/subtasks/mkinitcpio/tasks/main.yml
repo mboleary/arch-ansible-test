@@ -3,7 +3,7 @@
 
 - name: Gather all mkinitcpio hooks
   set_fact:
-    mkinitcpio_hooks: "{{ mkinitcpio_hooks }} + {{ disksetup_mkinitcpio_hooks | default('[]') }}"
+    mkinitcpio_hooks: "{{ mkinitcpio_hooks + disksetup_mkinitcpio_hooks }}"
 
 - name: Check if initramfs needs to be generated
   include_tasks:

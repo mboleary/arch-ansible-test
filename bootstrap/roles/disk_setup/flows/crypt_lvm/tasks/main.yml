@@ -12,8 +12,8 @@
     disksetup_packages:
       - lvm2
     disksetup_mkinitcpio_hooks:
-      - keyboard
-      - keymap
+      # - keyboard
+      # - keymap
       - encrypt
       - lvm2
     disksetup_bootloader_kernel_parameters:

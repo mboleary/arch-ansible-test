@@ -61,8 +61,11 @@
     lv: home
     force: true
 ## We need this UUID later for setting bootloader params
-- name: Store cryptlvm partition uuid
+- name: Get cryptlvm partition uuid
   command: "blkid -o value -s UUID {{ cryptlvm_luks_device }}"
-  register: cryptlvm_uuid
+  register: blkid_result
+- name: Store cryptlvm partition uuid
+  set_fact:
+    cryptlvm_uuid: "{{ blkid_result.stdout }}"
 - debug:
     var: cryptlvm_uuid
