@@ -2,7 +2,6 @@
 
 - name: Set partitioning variables
   set_fact:
-    
     cryptlvm_luks_device: "{{ part_info.disk.dev }}{{ disk_setup_partition_naming_scheme }}{{ part_info.partitions[1].num }}"
 
 
@@ -27,7 +26,7 @@
 
 - name: Create physical volume and volume group in crypt
   community.general.lvg:
-    vg: " {{ volgroup_name }}"
+    vg: "{{ volgroup_name }}"
     pvs: "/dev/mapper/{{ crypt_label }}"
     state: present
 
@@ -38,22 +37,32 @@
     size: "{{ swap_size }}"
     vg: "{{ volgroup_name }}"
     lv: swap
+    force: true
 
 - name: Create root volume
   community.general.lvol:
     size: "{{ root_size }}"
     vg: "{{ volgroup_name }}"
     lv: root
+    force: true
 
 - name: Create home volume
   community.general.lvol:
     size: "{{ home_size }}"
     vg: "{{ volgroup_name }}"
     lv: home
+    force: true
 
 ## This is recommended in the documentation for ext4 volumes
 - name: Reduce last volume size by 256MiB
   community.general.lvol:
-    size: "-256M"
+    size: -256M
     vg: "{{ volgroup_name }}"
     lv: home
+    force: true
+## We need this UUID later for setting bootloader params
+- name: Store cryptlvm partition uuid
+  command: "blkid -o value -s UUID {{ cryptlvm_luks_device }}"
+  register: cryptlvm_uuid
+- debug:
+    var: cryptlvm_uuid

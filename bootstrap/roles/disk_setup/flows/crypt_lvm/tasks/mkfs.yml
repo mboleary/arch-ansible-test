@@ -20,5 +20,5 @@
     fstype: ext4
 - name: Create Swap
   community.general.filesystem:
-    dev: "{{ cryptlvm_home_mapper }}"
+    dev: "{{ cryptlvm_swap_mapper }}"
     fstype: swap

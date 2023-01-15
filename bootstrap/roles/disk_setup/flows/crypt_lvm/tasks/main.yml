@@ -8,3 +8,14 @@
 - include_tasks: postpartitioning.yml
 - include_tasks: mkfs.yml
 - include_tasks: mount.yml
+- set_fact:
+    disksetup_packages:
+      - lvm2
+    disksetup_mkinitcpio_hooks:
+      - keyboard
+      - keymap
+      - encrypt
+      - lvm2
+    disksetup_bootloader_kernel_parameters:
+      - "ryptdevice=UUID={{ cryptlvm_uuid }}:cryptlvm"
+      - "root=/dev/{{ volgroup_name }}/root"

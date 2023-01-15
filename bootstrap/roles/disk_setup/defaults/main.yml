@@ -9,6 +9,10 @@ partition_options:
 temp_fde_pw: archtest
 partition: false
 
+disksetup_packages: []
+disksetup_mkinitcpio_hooks: []
+disksetup_bootloader_kernel_parameters: []
+
 ## Internals
 
 # Determines what partitioning flow to use
