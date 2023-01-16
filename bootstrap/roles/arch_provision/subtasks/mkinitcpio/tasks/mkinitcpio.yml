@@ -6,5 +6,5 @@
     path: "{{ rootfs_mountpoint }}/etc/mkinitcpio.conf"
     regexp: '^HOOKS=\(([a-z ]*)\)'
     line: 'HOOKS=(\1 {{ mkinitcpio_hooks | join('' '') }})'
-- name: Generate initcpio
+- name: Generate initramfs
   command: "arch-chroot {{ rootfs_mountpoint }} mkinitcpio -P"

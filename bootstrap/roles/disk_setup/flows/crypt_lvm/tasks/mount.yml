@@ -7,17 +7,17 @@
     path: "{{ rootfs_mountpoint }}"
     fstype: ext4
 
-- name: Create /boot/efi mountpoint
+- name: Create /boot mountpoint
   file:
     state: directory
-    name: "{{ rootfs_mountpoint }}/boot/efi"
+    name: "{{ rootfs_mountpoint }}/boot"
     recurse: yes
 
 - name: Mount the ESP
   mount:
     state: mounted
     src: "{{ cryptlvm_esp_device }}"
-    path: "{{ rootfs_mountpoint }}/boot/efi"
+    path: "{{ rootfs_mountpoint }}/boot"
     fstype: vfat
 
 - name: Create /home mountpoint
@@ -30,8 +30,8 @@
   mount:
     state: mounted
     src: "{{ cryptlvm_home_mapper }}"
-    path: "{{ rootfs_mountpoint }}/boot/efi"
-    fstype: vfat
+    path: "{{ rootfs_mountpoint }}/home"
+    fstype: ext4
 
 - name: Enable the swap partition
   command: "swapon {{ cryptlvm_swap_mapper }}"

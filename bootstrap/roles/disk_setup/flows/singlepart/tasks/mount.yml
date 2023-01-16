@@ -12,15 +12,15 @@
     path: "{{ rootfs_mountpoint }}"
     fstype: ext4
 
-- name: Create /boot/efi mountpoint
+- name: Create /boot mountpoint
   file:
     state: directory
-    name: "{{ rootfs_mountpoint }}/boot/efi"
+    name: "{{ rootfs_mountpoint }}/boot"
     recurse: yes
 
 - name: Mount the ESP
   mount:
     state: mounted
     src: "{{ singlepart_esp_device }}"
-    path: "{{ rootfs_mountpoint }}/boot/efi"
+    path: "{{ rootfs_mountpoint }}/boot"
     fstype: vfat

@@ -54,12 +54,14 @@
     force: true
 
 ## This is recommended in the documentation for ext4 volumes
+# - name: Reduce last volume size by 256MiB
+  # community.general.lvol:
+  #   size: -256M
+  #   vg: "{{ volgroup_name }}"
+  #   lv: home
+  #   force: true
 - name: Reduce last volume size by 256MiB
-  community.general.lvol:
-    size: -256M
-    vg: "{{ volgroup_name }}"
-    lv: home
-    force: true
+  command: "lvreduce -y -L -256M {{ volgroup_name }}/home"
 ## We need this UUID later for setting bootloader params
 - name: Get cryptlvm partition uuid
   command: "blkid -o value -s UUID {{ cryptlvm_luks_device }}"
