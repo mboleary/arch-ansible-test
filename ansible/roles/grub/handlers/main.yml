@@ -1,0 +1,9 @@
+---
+# handlers file for grub
+- name: reinstall grub
+  listen: "grub_intall"
+  command: "grub-install --target={{ grub_target }} --efi-directory={{ grub_efi_directory }} --bootloader={{ grub_bootloader_id }}"
+  
+- name: Generate grub.cfg
+  listen: "grub_generate_config"
+  command: "grub-mkconfig -o /boot/grub/grub.cfg"

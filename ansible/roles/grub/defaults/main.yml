@@ -1,0 +1,6 @@
+---
+# defaults file for grub
+
+grub_target: x86_64-efi
+grub_efi_directory: /boot
+grub_bootloader_id: GRUB

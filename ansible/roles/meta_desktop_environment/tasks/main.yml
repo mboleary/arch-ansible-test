@@ -5,5 +5,5 @@
 
 - name: Jump to desktop environment subtask
   import_role:
-    name: "desktop_environment/subtasks/kde"
-    # name: "desktop_environment/subtasks/{{ desktop_environment }}"
+    name: "kde"
+  when: "desktop_environment == 'kde'"

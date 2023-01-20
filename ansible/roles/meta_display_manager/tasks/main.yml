@@ -6,5 +6,5 @@
 
 - name: Jump to subtask to install Display Manager
   import_role: 
-    # name: "display_manager/subtasks/{{ display_manager }}"
-    name: "display_manager/subtasks/sddm"
+    name: "sddm"
+  when: "display_manager == 'sddm'"

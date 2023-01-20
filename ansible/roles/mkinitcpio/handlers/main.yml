@@ -1,0 +1,6 @@
+---
+# handlers file for mkinitcpio
+
+- name: regenerate initramfs
+  listen: "mkinitcpio"
+  command: "mkinitcpio -P"

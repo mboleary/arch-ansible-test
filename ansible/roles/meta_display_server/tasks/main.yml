@@ -1,0 +1,10 @@
+---
+# tasks file for display_server
+
+- debug:
+    var: display_server
+
+- name: Install the xorg packages
+  import_role:
+    name: "x11"
+  when: display_server == "x11"

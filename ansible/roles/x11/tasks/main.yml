@@ -1,8 +1,5 @@
 ---
-# tasks file for display_server
-
-- debug:
-    var: display_server
+# tasks file for x11
 
 - name: Install the xorg packages
   pacman:
@@ -16,4 +13,3 @@
       # - xorg-xclock
       # - xterm
       # - xorg-xeyes
-  when: display_server == "xorg"
