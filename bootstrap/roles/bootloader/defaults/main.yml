@@ -3,6 +3,5 @@
 
 bootloader_kernel_parameters: []
 bootloader_target: x86_64-efi
-# bootloader_efi_directory: /boot/EFI
 bootloader_efi_directory: /boot
 bootloader_id: GRUB
