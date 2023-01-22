@@ -17,10 +17,17 @@
   tags:
     - graphical
   roles:
-    - display_server
-    - display_manager
-    - desktop_environment
+    - meta_display_server
+    - meta_display_manager
+    - meta_desktop_environment
 
+- name: General configuration
+  hosts: all
+  become: true
+  tags:
+    - configure
+  roles: 
+    - network_manager_config
 
 # - name: Run updates
 #   hosts: all

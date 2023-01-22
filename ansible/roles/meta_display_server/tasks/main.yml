@@ -7,4 +7,4 @@
 - name: Install the xorg packages
   import_role:
     name: "x11"
-  when: display_server == "x11"
+  when: "display_server == 'x11'"

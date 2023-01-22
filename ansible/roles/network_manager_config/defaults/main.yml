@@ -1,0 +1,4 @@
+---
+# defaults file for network_manager_config
+
+network_manager_polkit_rules: true

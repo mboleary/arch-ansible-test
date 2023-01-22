@@ -16,6 +16,7 @@ users:
     - wheel
     - adm
     - uucp
+    - network
 
 user_groups:
 - sudo

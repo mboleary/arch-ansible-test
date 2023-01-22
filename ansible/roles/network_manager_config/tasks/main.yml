@@ -1,0 +1,9 @@
+---
+# tasks file for network_manager_config
+
+- name: Add polkit rules for users
+  when: "network_manager_polkit_rules == true"
+  copy:
+    src: 50-org.freedesktop.NetworkManager.rules
+    dest: /etc/polkit-1/rules.d/
+    mode: "0644"
