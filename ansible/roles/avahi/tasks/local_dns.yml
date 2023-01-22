@@ -1,0 +1,14 @@
+# Configures hostname.local dns resolution
+
+- name: Install nss-mdns
+  pacman:
+    name:
+      - nss-mdns
+
+- name: modify /etc/nsswitch.conf
+  lineinfile:
+    path: /etc/nsswitch.conf
+    backup: true
+    backrefs: true
+    regexp: '^hosts: (mymachines) ([A-Za-z\[\]!= ]*)'
+    line: 'hosts: \1 mdns_minimal [NOTFOUND=return] \2'

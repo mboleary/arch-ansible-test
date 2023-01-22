@@ -1,0 +1,18 @@
+---
+# tasks file for avahi
+- name: Install avahi daemon
+  pacman:
+    name:
+      - avahi
+      - nss-mdns
+
+- name: Configure local DNS
+  when: "avahi_local_dns == true"
+  import_tasks: local_dns.yml
+
+
+- name: Enable and start the avahi service
+  systemd:
+    enabled: true
+    state: started
+    name: avahi-daemon

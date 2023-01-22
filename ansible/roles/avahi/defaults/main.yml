@@ -1,0 +1,3 @@
+---
+# defaults file for avahi
+avahi_local_dns: true

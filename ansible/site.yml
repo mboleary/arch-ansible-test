@@ -28,6 +28,7 @@
     - configure
   roles: 
     - network_manager_config
+    - avahi
 
 # - name: Run updates
 #   hosts: all
