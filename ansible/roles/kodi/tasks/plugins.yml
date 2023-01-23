@@ -1,1 +1,11 @@
 # Install plugins for Kodi
+
+- name: Install plugins
+  pacman:
+    name:
+      - kodi-addon-inputstream-adaptive
+      - kodi-addon-inputstream-rtmp
+      - kodi-addon-peripheral-joystick
+      - kodi-addon-screensaver-matrixtrails
+      - kodi-addon-visualization-waveform
+      - kodi-addon-game-libretro
