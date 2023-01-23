@@ -1,0 +1,4 @@
+# defaults for x11
+
+x11_xinit: false
+# x11_xinit_users:

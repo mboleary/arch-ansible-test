@@ -1,0 +1,16 @@
+---
+# tasks file for alsa
+
+- name: Install alsa utils
+  pacman:
+    name:
+      - alsa-utils
+      - alsa-plugins
+      - alsa-tools
+- name: Install extra firmware
+  when: "alsa_install_firmware == true"
+  pacman:
+    name:
+      - alsa-firmware
+      - sof-firmware
+      - alsa-ucm-conf

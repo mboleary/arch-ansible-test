@@ -13,3 +13,7 @@
       # - xorg-xclock
       # - xterm
       # - xorg-xeyes
+
+- name: Install xinit script
+  when: "x11_xinit == true"
+  import_tasks: xinit.yml

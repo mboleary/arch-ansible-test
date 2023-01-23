@@ -33,6 +33,7 @@
       - xdg-user-dirs
       - python
       - htop
+      - bind
       ## Needed to install aur helper later
       - base-devel
 

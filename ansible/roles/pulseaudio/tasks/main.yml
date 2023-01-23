@@ -1,0 +1,11 @@
+---
+# tasks file for pulseaudio
+
+- name: Install pulseaudio packages
+  pacman:
+    name:
+      - pulseaudio
+      - pulseaudio-alsa
+      - pulseaudio-zeroconf
+      - pamixer
+      - pulsemixer

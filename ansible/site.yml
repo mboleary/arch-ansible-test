@@ -30,6 +30,15 @@
     - network_manager_config
     - avahi
 
+- name: Configure Multimedia system
+  hosts: kodi
+  become: true
+  tags:
+    - kodi
+  roles:
+    - kodi
+    - pulseaudio
+
 # - name: Run updates
 #   hosts: all
 #   tags:

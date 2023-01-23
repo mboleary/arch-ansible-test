@@ -1,0 +1,8 @@
+# Installs and configures x11 for being run by the user after login
+
+- name: Install xinit
+  pacman:
+    name: 
+      - xorg-xinit
+
+# - name: Add xserverrc file

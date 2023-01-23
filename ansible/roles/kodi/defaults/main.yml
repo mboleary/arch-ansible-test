@@ -1,0 +1,5 @@
+---
+# defaults file for kodi
+
+kodi_install_plugins: false
+kodi_standalone: false

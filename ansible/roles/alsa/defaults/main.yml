@@ -1,0 +1,4 @@
+---
+# defaults file for alsa
+
+alsa_install_firmware: false

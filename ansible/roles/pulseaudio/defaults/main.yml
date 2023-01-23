@@ -1,0 +1,3 @@
+---
+# defaults file for pulseaudio
+pulseaudio_install_graphical_apps: false

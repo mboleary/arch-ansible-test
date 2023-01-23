@@ -29,7 +29,7 @@
 ## Tasks to run as non-root user
 - name: Install yay (aur helper)
   become: true
-  become_user: "{{ user_control_name }}"
+  become_user: "{{ ansible_user }}"
   kewlfft.aur.aur:
     name: yay
     use: makepkg

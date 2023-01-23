@@ -1,0 +1,19 @@
+# Configure kodi to run in standalone mode
+
+- name: Install kodi-standalone service from AUR
+  become: true
+  become_user: "{{ ansible_user }}"
+  kewlfft.aur.aur:
+    name: kodi-standalone-service
+    state: present
+    use: yay
+
+# Note that with installing this, we are creating a new unprivileged user 'kodi' to run everything
+
+# Note: if there are issues related to `systemd-homed`, modifications to `/etc/pam.d/system-auth` will need to be made
+
+- name: Enable kodi-x11 service
+  systemd:
+    enabled: true
+    state: started
+    name: kodi-x11

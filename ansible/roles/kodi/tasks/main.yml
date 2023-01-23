@@ -1,0 +1,18 @@
+---
+# tasks file for kodi
+
+- name: Install Kodi packages
+  pacman:
+    name:
+      - kodi
+      - kodi-eventclients
+      # adds a missing .so file (maybe a missed dependency issue?)
+      - lzo
+
+- name: configure kodi to run standalone
+  when: "kodi_standalone == true"
+  import_tasks: standalone.yml
+
+- name: install extra Kodi plugins
+  when: "kodi_install_plugins == true"
+  import_tasks: plugins.yml
