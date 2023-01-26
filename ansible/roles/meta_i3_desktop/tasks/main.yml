@@ -1,0 +1,37 @@
+---
+# tasks file for meta_i3_desktop
+
+- name: install packages
+  pacman:
+    name:
+      # Window Manager
+      - i3-wm
+      # Compositor
+      - picom
+      # Screen Locking
+      - i3lock
+      - xss-lock
+      # Software
+      - rofi
+      - polybar
+      - arandr
+      - pasystray
+      - pavucontrol
+      - feh
+      - ttf-liberation
+      - ttf-dejavu
+      - noto-fonts
+      - alacritty
+      - dex
+      - xclip
+      - clipmenu
+      - redshift
+      # - onboard
+
+- name: install AUR packages
+  become: true
+  become_user: "{{ ansible_user }}"
+  kewlfft.aur.aur:
+    name: st
+    state: present
+    use: yay

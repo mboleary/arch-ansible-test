@@ -1,0 +1,19 @@
+---
+# tasks file for lightdm
+
+- name: Install lightdm packages
+  pacman:
+    name:
+      - lightdm
+      - xorg-server-xephyr
+      - accountsservice
+      - light-locker
+
+- name: Install and configure greeter
+  import_tasks: greeter.yml
+
+- name: Enable systemd service
+  systemd:
+    enabled: true
+    state: started
+    name: lightdm.service

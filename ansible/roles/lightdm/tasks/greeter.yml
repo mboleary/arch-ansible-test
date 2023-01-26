@@ -1,0 +1,44 @@
+
+- name: Determine greeter to install
+  when: "lightdm_greeter == null"
+  set_fact:
+    lightdm_greeter: lightdm-gtk-greeter
+    lightdm_greeter_settings: lightdm-gtk-greeter-settings
+
+- name: Install greeter
+  when: "lightdm_greeter_use_aur == false"
+  pacman:
+    name:
+      - "{{ lightdm_greeter }}"
+
+- name: Install greeter from AUR
+  when: "lightdm_greeter_use_aur == true"
+  become: true
+  become_user: "{{ ansible_user }}"
+  kewlfft.aur.aur:
+    name: "{{ lightdm_greeter }}"
+    state: present
+    use: yay
+
+- name: Set default greeter
+  lineinfile:
+    path: "/etc/lightdm/lightdm.conf"
+    backup: true
+    regexp: '#?greeter-session='
+    line: "greeter-session={{ lightdm_greeter }}"
+
+- name: Install the settings application for the greeter
+  when: "lightdm_greeter_settings != null and lightdm_greeter_use_aur == false"
+  pacman:
+    name:
+      - "{{ lightdm_greeter_settings }}"
+
+- name: Install the settings application for the greeter
+  when: "lightdm_greeter_settings != null and lightdm_greeter_use_aur == true"
+  become: true
+  become_user: "{{ ansible_user }}"
+  kewlfft.aur.aur:
+    name: "{{ lightdm_greeter_settings }}"
+    state: present
+    use: yay
+  

@@ -1,0 +1,25 @@
+
+- name: Create autologin group
+  group:
+    name: autologin
+
+- name: Add autologin user to autologin group
+  user:
+    name: "{{ lightdm_autologin_user }}"
+    groups:
+      - autologin
+
+- name: Add user to config file
+  lineinfile:
+    path: "/etc/lightdm/lightdm.conf"
+    backup: true
+    regexp: '#?autologin-user='
+    line: "autologin-user={{ lightdm_autologin_user }}"
+
+- name: Configure autologin user's session
+  when: "lightdm_autologin_session != null"
+  lineinfile:
+    path: "/etc/lightdm/lightdm.conf"
+    backup: true
+    regexp: '#?autologin-session='
+    line: "autologin-session={{ lightdm_autologin_session }}"
