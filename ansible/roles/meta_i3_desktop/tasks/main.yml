@@ -11,6 +11,13 @@
       # Screen Locking
       - i3lock
       - xss-lock
+      # Network Manager
+      - nm-connection-editor
+      - network-manager-applet
+      # Fonts
+      - ttf-liberation
+      - ttf-dejavu
+      - noto-fonts
       # Software
       - rofi
       - polybar
@@ -18,9 +25,6 @@
       - pasystray
       - pavucontrol
       - feh
-      - ttf-liberation
-      - ttf-dejavu
-      - noto-fonts
       - alacritty
       - dex
       - xclip

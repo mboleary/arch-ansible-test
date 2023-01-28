@@ -17,7 +17,7 @@
     line: "autologin-user={{ lightdm_autologin_user }}"
 
 - name: Configure autologin user's session
-  when: "lightdm_autologin_session != null"
+  when: "lightdm_autologin_session != None"
   lineinfile:
     path: "/etc/lightdm/lightdm.conf"
     backup: true

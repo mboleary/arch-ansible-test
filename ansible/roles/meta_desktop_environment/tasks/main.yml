@@ -7,3 +7,8 @@
   import_role:
     name: "kde"
   when: "desktop_environment == 'kde'"
+
+- name: Jump to desktop environment subtask
+  import_role:
+    name: "meta_i3_desktop"
+  when: "desktop_environment == 'i3'"

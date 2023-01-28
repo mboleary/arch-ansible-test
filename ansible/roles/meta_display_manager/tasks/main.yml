@@ -8,3 +8,8 @@
   import_role: 
     name: "sddm"
   when: "display_manager == 'sddm'"
+
+- name: Jump to subtask to install Display Manager
+  import_role: 
+    name: "lightdm"
+  when: "display_manager == 'lightdm'"
