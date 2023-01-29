@@ -2,8 +2,8 @@
 ## Ansible Configuration
 ansible_user: ansible
 
-## General Configuration
-users:
+## Global Variables to be used elsewhere
+global_users:
 - name: brady
   sudo: true
   admin: true
@@ -17,6 +17,9 @@ users:
     - adm
     - uucp
     - network
+## General Configuration
+### Override this to add more users
+users: "{{ global_users }}"
 
 user_groups:
 - sudo
