@@ -1,0 +1,6 @@
+# Group for installing Kodi
+
+display_server: x11
+kodi_standalone: true
+kodi_install_plugins: true
+x11_xinit: true
