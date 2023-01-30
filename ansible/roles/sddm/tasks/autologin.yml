@@ -1,0 +1,7 @@
+# Configures a user for autologin
+
+- name: Configure user for autologin
+  template:
+    src: autologin.conf.j2
+    dest: /etc/sddm.conf.d/autologin.conf
+    

@@ -2,3 +2,6 @@
 # defaults file for display_manager
 
 display_manager: null
+display_manager_autologin: false
+display_manager_autologin_user: null
+display_manager_autologin_session: null

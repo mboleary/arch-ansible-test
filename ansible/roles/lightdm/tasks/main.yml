@@ -17,3 +17,11 @@
     enabled: true
     state: started
     name: lightdm.service
+
+- name: Hide control user
+  lineinfile:
+    path: "/etc/lightdm/users.conf"
+    backup: true
+    regexp: "^hidden-users=([a-z0-9 ]*)"
+    backrefs: true
+    line: 'hidden-users=\1 {{ ansible_user }}'

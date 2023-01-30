@@ -1,6 +1,6 @@
 # Variables for the provision group
 ## Ansible Configuration
-ansible_ssh_pass: arch
+# ansible_ssh_pass: arch
 ansible_user: root
 
 ## General Configuration

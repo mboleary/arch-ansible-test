@@ -27,6 +27,8 @@
   tags:
     - configure
   roles: 
+    - aur_helper
+    - users
     - network_manager_config
     - avahi
 
@@ -38,6 +40,9 @@
   roles:
     - kodi
     - pulseaudio
+    - meta_display_server
+    - meta_display_manager
+    - meta_desktop_environment
 
 # - name: Run updates
 #   hosts: all

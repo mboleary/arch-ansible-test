@@ -1,2 +1,5 @@
 ---
 # defaults file for sddm
+sddm_autologin: false
+sddm_autologin_user: null
+sddm_autologin_session: null

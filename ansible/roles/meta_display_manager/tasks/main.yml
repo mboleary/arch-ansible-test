@@ -5,11 +5,9 @@
     var: display_manager
 
 - name: Jump to subtask to install Display Manager
-  import_role: 
-    name: "sddm"
+  import_tasks: sddm.yml
   when: "display_manager == 'sddm'"
 
 - name: Jump to subtask to install Display Manager
-  import_role: 
-    name: "lightdm"
+  import_tasks: lightdm.yml
   when: "display_manager == 'lightdm'"

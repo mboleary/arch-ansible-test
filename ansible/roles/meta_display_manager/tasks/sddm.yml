@@ -1,0 +1,7 @@
+
+- import_role:
+    name: sddm
+  vars:
+    sddm_autologin: "{{ display_manager_autologin }}"
+    sddm_autologin_user: "{{ display_manager_autologin_user }}"
+    sddm_autologin_session: "{{ display_manager_autologin_session }}"

@@ -1,0 +1,7 @@
+
+- import_role:
+    name: lightdm
+  vars:
+    lightdm_autologin: "{{ display_manager_autologin }}"
+    lightdm_autologin_user: "{{ display_manager_autologin_user }}"
+    lightdm_autologin_session: "{{ display_manager_autologin_session }}"

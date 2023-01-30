@@ -1,6 +1,24 @@
 # Group for installing Kodi
 
 display_server: x11
-kodi_standalone: true
+kodi_standalone: false
 kodi_install_plugins: true
-x11_xinit: true
+x11_xinit: false
+display_manager: lightdm
+display_manager_autologin: user
+
+_kiosk_user:
+  name: user
+  password_hash: "{{ 'password' | password_hash('sha512') }}"
+  comment: Kiosk User
+  groups:
+    - sys
+    # - games
+    - audio
+    - autologin
+
+# users: "{{ global_users + [ _kiosk_user ] }}"
+users: "{{ [ _kiosk_user ] }}"
+user_groups:
+  - sudo
+  - autologin
