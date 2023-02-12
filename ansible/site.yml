@@ -1,4 +1,21 @@
 # Main playbook
+- name: General configuration
+  hosts: all
+  become: true
+  tags:
+    - configure
+  roles: 
+    - aur_helper
+    - network_manager_config
+    - avahi
+
+- name: Configure Users
+  hosts: all
+  become: true
+  tags:
+    - users
+  roles: 
+    - users
 
 - name: VM Guest Additions
   hosts: vm
@@ -21,28 +38,20 @@
     - meta_display_manager
     - meta_desktop_environment
 
-- name: General configuration
-  hosts: all
-  become: true
-  tags:
-    - configure
-  roles: 
-    - aur_helper
-    - users
-    - network_manager_config
-    - avahi
-
 - name: Configure Multimedia system
   hosts: kodi
   become: true
   tags:
     - kodi
   roles:
+    - driver_amdgpu
     - kodi
     - pulseaudio
     - meta_display_server
     - meta_display_manager
     - meta_desktop_environment
+    - meta_games
+    - meta_web_browser
 
 # - name: Run updates
 #   hosts: all

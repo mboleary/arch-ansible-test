@@ -1,3 +1,4 @@
 ---
 # defaults file for pulseaudio
 pulseaudio_install_graphical_apps: false
+pulseaudio_configure_tcp_audio: true

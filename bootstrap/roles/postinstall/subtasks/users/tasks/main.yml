@@ -1,10 +1,10 @@
 ---
 # tasks file for users
 
-- name: Create groups
-  group:
-    name: "{{ item }}"
-  loop: "{{ user_groups }}"
+# - name: Create groups
+#   group:
+#     name: "{{ item }}"
+#   loop: "{{ user_groups }}"
 
 - name: Create control user
   user:

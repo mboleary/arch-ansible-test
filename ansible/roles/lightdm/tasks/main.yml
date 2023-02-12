@@ -25,3 +25,7 @@
     regexp: "^hidden-users=([a-z0-9 ]*)"
     backrefs: true
     line: 'hidden-users=\1 {{ ansible_user }}'
+
+- name: Configure autologin
+  when: "lightdm_autologin == true"
+  import_tasks: autologin.yml

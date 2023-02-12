@@ -1,0 +1,4 @@
+---
+# defaults file for driver_amdgpu
+
+amdgpu_32bit_support: false

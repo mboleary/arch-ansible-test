@@ -1,0 +1,7 @@
+---
+# tasks file for meta_web_browser
+
+- name: Install web browser
+  pacman:
+    name:
+      - chromium

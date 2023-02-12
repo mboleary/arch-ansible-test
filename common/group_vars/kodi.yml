@@ -5,7 +5,9 @@ kodi_standalone: false
 kodi_install_plugins: true
 x11_xinit: false
 display_manager: lightdm
-display_manager_autologin: user
+display_manager_autologin: true
+display_manager_autologin_user: user
+display_manager_autologin_session: kodi
 
 _kiosk_user:
   name: user
@@ -17,8 +19,8 @@ _kiosk_user:
     - audio
     - autologin
 
-# users: "{{ global_users + [ _kiosk_user ] }}"
-users: "{{ [ _kiosk_user ] }}"
+users: "{{ global_users + [ _kiosk_user ] }}"
+# users: "{{ [ _kiosk_user ] }}"
 user_groups:
   - sudo
   - autologin

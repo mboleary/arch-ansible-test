@@ -1,0 +1,10 @@
+---
+# tasks file for udisks
+
+- name: Install udisks
+  pacman:
+    name:
+      - udisks2
+      - udiskie
+
+## @TODO make `udiskie` optional based on whether this is a graphical system or not

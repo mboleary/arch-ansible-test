@@ -31,11 +31,23 @@
       - clipmenu
       - redshift
       # - onboard
+      # Useful software
+      - thunar
+      - vlc
+      # Notifications
+      - dunst
+      - notification-daemon
+      - libnotify
 
 - name: install AUR packages
   become: true
   become_user: "{{ ansible_user }}"
   kewlfft.aur.aur:
-    name: st
+    name: 
+      - st
     state: present
     use: yay
+
+- name: Configure udisks
+  import_role: 
+    name: udisks

@@ -9,3 +9,4 @@
       - pulseaudio-zeroconf
       - pamixer
       - pulsemixer
+      - paprefs

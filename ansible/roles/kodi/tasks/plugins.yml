@@ -8,4 +8,4 @@
       - kodi-addon-peripheral-joystick
       - kodi-addon-screensaver-matrixtrails
       - kodi-addon-visualization-waveform
-      - kodi-addon-game-libretro
+      # - kodi-addon-game-libretro

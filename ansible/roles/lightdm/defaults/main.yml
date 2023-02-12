@@ -4,6 +4,7 @@
 lightdm_greeter: null # Theme to be installed
 lightdm_greeter_settings: null # Graphical Settings application for the installed theme
 lightdm_greeter_use_aur: false
+lightdm_autologin: false
 lightdm_autologin_user: null
 lightdm_autologin_session: null
 lightdm_default_session: null

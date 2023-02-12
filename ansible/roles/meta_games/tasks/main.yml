@@ -1,0 +1,20 @@
+---
+# tasks file for meta_games
+
+- name: Install packages for games
+  pacman:
+    name:
+      - dolphin-emu
+      - retroarch
+      - retroarch-assets-xmb
+      - retroarch-assets-ozone
+      - sauerbraten
+      - sauerbraten-data
+
+- name: Install AUR pacakges for games
+  become: true
+  become_user: "{{ ansible_user }}"
+  kewlfft.aur.aur: 
+    name:
+      - emulationstation
+      - kodi-addon-game-libretro
