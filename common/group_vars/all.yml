@@ -1,4 +1,7 @@
 # Variables for all hosts
+## Directories
+global_bin_directory: /usr/share/arch-ansible
+
 ## Ansible Configuration
 ansible_user: ansible
 

@@ -53,8 +53,10 @@
     - meta_games
     - meta_web_browser
 
-# - name: Run updates
-#   hosts: all
-#   tags:
-#     - update
-#   tasks:
+- name: Run updates
+  hosts: all
+  become: true
+  tags:
+    - update
+  roles:
+    - update

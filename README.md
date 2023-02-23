@@ -50,6 +50,14 @@ ansible-playbook ./site.yml -i hosts.yml --tags postinstall
 
 At this point, the system should be ready for use in the main playbook. It will have 2 users added; your user account, and a control user named `ansible`. Both of these users have root access via sudo, and the control user is only able to login using the ssh keys from the ansible host.
 
+#### Full-Disk Encryption Note
+
+If `crypt_lvm` was used for the disk layout, then be sure to change your FDE password away from the temporary one. See [the ArckWiki article on this](https://wiki.archlinux.org/title/dm-crypt/Device_encryption#Cryptsetup_actions_specific_for_LUKS) for more information.
+
 ### Ansible
 This collection is meant to broadly configure a bootstrapped system, meaning that these tasks will do basic maintenance, including updates, checking disk health, etc. These tasks are also responsible for installing packages to configure a system in a particular way.
 
+### Directories
+
+- `/var/log/arch-ansible`
+- `/usr/share/arch-ansible`

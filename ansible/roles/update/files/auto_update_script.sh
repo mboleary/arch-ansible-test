@@ -28,11 +28,10 @@ pacman_update () {
 
 	touch $LOGFILE
 
+	echo "================================================================================" >> $LOGFILE
+	echo "$HOSTNAME" >> $LOGFILE
 	echo "pacman-Syu --noconfirm" >> $LOGFILE
 	pacman -Syu --noconfirm >> $LOGFILE 2>&1
-	# echo "\nyay" >> $LOGFILE
-	# yay &2>1 >> $LOGFILE
-
 }
 
 pacman_update

@@ -1,0 +1,4 @@
+---
+# defaults file for meta_config
+global_bin_directory: "/usr/share/arch-ansible"
+global_log_directory: "/var/log/arch-ansible"

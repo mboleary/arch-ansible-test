@@ -1,0 +1,6 @@
+---
+# tasks file for meta_config
+- name: Ensure util directory exists
+  file:
+    state: directory
+    name: "{{ global_bin_directory }}"
