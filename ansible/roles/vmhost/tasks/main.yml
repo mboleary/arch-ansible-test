@@ -1,0 +1,29 @@
+---
+# tasks file for vmhost
+
+- name: Install VM Host packages
+  pacman:
+    name:
+      - virt-manager
+      - qemu-desktop
+      - dnsmasq
+      # - iptables-nft
+
+- name: Start libvirtd service
+  systemd:
+    enabled: true
+    state: started
+    name: libvirtd
+
+- name: Enable regular users to configure virtual machines
+  blockinfile:
+    path: /etc/libvirt/libvirtd.conf
+    backup: true
+    block: | 
+      unix_sock_group = 'libvirt'
+      unix_sock_rw_perms = '0770'
+
+- name: Add main user to libvirt group
+  user:
+    append: true
+    groups: "libvirt"
