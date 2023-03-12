@@ -1,2 +1,18 @@
 ---
 # tasks file for logging
+
+- name: Install system logging tools
+  pacman:
+    name:
+      - logwatch
+      - logrotate
+
+- name: Enable logwatch timer
+  systemd:
+    enabled: true
+    state: started
+    name: logwatch.timer
+
+## @TODO configure logwatch: https://wiki.archlinux.org/title/Logwatch
+
+## @TODO configure logrotate: https://wiki.archlinux.org/title/Logrotate

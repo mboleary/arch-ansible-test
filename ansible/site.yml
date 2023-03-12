@@ -37,6 +37,7 @@
     - meta_display_server
     - meta_display_manager
     - meta_desktop_environment
+    - pulseaudio
 
 - name: Configure Multimedia system
   hosts: kodi

@@ -3,7 +3,7 @@
   remote_user: root
   vars:
     # temporary
-    # rootfs_mountpoint: /mnt
+    rootfs_mountpoint: /mnt
   tags:
     - never
     - bootstrap

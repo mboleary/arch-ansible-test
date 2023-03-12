@@ -1,0 +1,14 @@
+# Installs and configures HDD SMART data tools
+
+- name: Install system health daemons
+  pacman:
+    name:
+      - smartmontools
+
+- name: Enable smartd service
+  systemd:
+    enabled: true
+    state: started
+    name: smartd
+
+## @TODO configure https://wiki.archlinux.org/title/S.M.A.R.T.

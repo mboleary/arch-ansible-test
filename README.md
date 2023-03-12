@@ -39,7 +39,7 @@ ansible-playbook ./site.yml -i hosts.yml --tags never,bootstrap
 
 4. Reboot the machine by running `reboot` in the terminal. If running on a VM using qemu/kvm, it may be necessary to shut down the vm in order to remove the livecd iso from the virtual cd drive.
 
-5. Remove the host from the `provision` group and add it to the `postinatll` group.
+5. Remove the host from the `provision` group and add it to the `postinstall` group.
 
 At this point, you should be rebooted into a working system and met with the standard login prompt on a linux workstation without a display manager installed. You should take heed that the ip address may be different than the first time around, and you will need to update your `site.yml` file accordingly. The root password is not set this time, and the only way into the system at this point is using the ssh keys copied over from the ansible host. We are now in the __postinstall__ phase of bootstrap.
 

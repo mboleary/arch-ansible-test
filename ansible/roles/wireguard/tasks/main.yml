@@ -1,0 +1,9 @@
+---
+# tasks file for wireguard
+
+- name: Install Wireguard userspace utilities
+  pacman:
+    name: 
+      - wireguard-tools
+
+## @TODO configure: https://wiki.archlinux.org/title/WireGuard

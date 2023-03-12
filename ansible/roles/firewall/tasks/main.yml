@@ -1,0 +1,22 @@
+# Installs a firewall
+
+- name: Install firewall packages
+  pacman:
+    name:
+      - iptables
+      - ufw
+- name: Install additional graphical packages
+  when: "firewall_install_graphical_apps == true"
+  pacman:
+    name:
+      - gufw
+- name: Start iptables service
+  systemd:
+    enabled: true
+    state: started
+    name: iptables
+- name: Start ufw service
+  systemd:
+    enabled: true
+    state: started
+    name: ufw

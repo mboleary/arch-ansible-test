@@ -1,0 +1,8 @@
+# Installs and configures hddtemp
+
+- name: Install system health daemons
+  pacman:
+    name:
+      - hddtemp
+
+## @TODO enable and configure daemon

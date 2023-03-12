@@ -1,0 +1,31 @@
+# Installs and configures lm_sensors
+
+- name: Install lm_sensors package
+  pacman:
+    name:
+      - lm_sensors
+      - i2c-tools
+
+## See warning about running this automatically (not run by default): 
+## https://man.archlinux.org/man/extra/lm_sensors/sensors-detect.8.en
+- name: Run sensors-detect
+  when: "logging_detect_sensors == true"
+  shell: sensors-detect --auto
+
+- name: Install graphical tool for sensors for KDE if installed
+  when: logging_install_graphical_tools == true and desktop_environment is defined and desktop_environment == "kde"
+  pacman:
+    name:
+      - plasma5-applets-thermal-monitor
+
+- name: Install graphical tool for sensors
+  when: logging_install_graphical_tools == true and (desktop_environment is not defiend or desktop_environment != "kde")
+  pacman:
+    name:
+      - psensor
+
+- name: Enable sensord
+  systemd:
+    enabled: true
+    state: started
+    name: sensord

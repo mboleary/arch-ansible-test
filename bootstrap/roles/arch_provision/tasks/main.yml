@@ -36,6 +36,7 @@
       - bind
       - reflector
       - wget
+      - usbutils
       ## Needed to install aur helper later
       - base-devel
 
