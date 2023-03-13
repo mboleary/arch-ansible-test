@@ -24,6 +24,8 @@
       unix_sock_rw_perms = '0770'
 
 - name: Add main user to libvirt group
+  when: "vmhost_user"
   user:
     append: true
     groups: "libvirt"
+    name: "{{ vmhost_user }}"

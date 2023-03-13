@@ -1,0 +1,4 @@
+# For the MArch 2023 demo
+
+firewall_install_graphical_apps: true
+logging_install_graphical_apps: true

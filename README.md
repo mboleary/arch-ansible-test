@@ -23,6 +23,7 @@ ansible-galaxy collection install -r requirements.yml
 Provisioning is split into 2 groups; `bootstrap` and `ansible`.
 
 If creating a VM for testing, ensure that it's configured to use UEFI instead of BIOS.
+
 ### Bootstrap
 This collection is meant to provision a system from nothing, and get it into a usable state.
 
@@ -49,6 +50,15 @@ ansible-playbook ./site.yml -i hosts.yml --tags postinstall
 ```
 
 At this point, the system should be ready for use in the main playbook. It will have 2 users added; your user account, and a control user named `ansible`. Both of these users have root access via sudo, and the control user is only able to login using the ssh keys from the ansible host.
+
+### System Configuration
+There are additional steps available to configure and customize the system setup with desktop environments as well as installing other software.
+
+1. Open the hosts.yml file and update your system configuration to work in tandem with the roles listed in `site.yml`
+
+2. Run `ansible-playbook ./site.yml -i hosts.yml --tags configure,users` to install some base software and configure user accounts
+
+3. Run `ansible-playbook ./site.yml -i hosts.yml --tags <tag>` with whatever tag is needed to get the system into the final configuration
 
 #### Full-Disk Encryption Note
 
