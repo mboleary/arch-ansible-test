@@ -3,7 +3,7 @@
 volgroup_name: arch_test_vol_group
 crypt_label: cryptlvm
 # crypt_cipher: 
-swap_size: 1G # 8G
-root_size: 12G #32G
+swap_size: 8G # 8G
+root_size: 64G #32G
 home_size: 100%FREE
 part_esp_size: 512 # in megabytes

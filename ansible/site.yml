@@ -61,13 +61,13 @@
   tags:
     - demo
   roles:
-    # - meta_display_server
-    # - meta_display_manager
-    # - meta_desktop_environment
-    # - pulseaudio
-    # - alsa
-    # - meta_games
-    # - meta_web_browser
+    - meta_display_server
+    - meta_display_manager
+    - meta_desktop_environment
+    - pulseaudio
+    - alsa
+    - meta_games
+    - meta_web_browser
     - firewall
     - vmhost
     - wireguard
