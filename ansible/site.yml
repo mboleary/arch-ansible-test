@@ -72,6 +72,14 @@
     - vmhost
     - wireguard
 
+- name: Install Music Software
+  hosts: music
+  become: true
+  tags:
+    - music
+  roles:
+    - pro_audio
+
 - name: Run updates
   hosts: all
   become: true

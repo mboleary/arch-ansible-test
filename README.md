@@ -71,3 +71,8 @@ This collection is meant to broadly configure a bootstrapped system, meaning tha
 
 - `/var/log/arch-ansible`
 - `/usr/share/arch-ansible`
+
+## Tips and Tricks
+
+- To run provisioning steps on the same machine as the one running the ansible playbook, append `--connection=local` to the cli parameters
+- To run provisioning as another user, append `--user=<username>` to the cli parameters

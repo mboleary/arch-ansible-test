@@ -1,0 +1,33 @@
+---
+# tasks file for pro_audio
+
+# This is based on my needs, change as you see fit
+- name: Install Pro audio Tools
+  pacman:
+    name:
+      - lv2-plugins
+      - ladspa-plugins
+      - dssi-plugins
+      - vst-plugins
+      - qjackctl
+      - lmms
+      - ardour
+      - audacity
+      - polyphone
+      - muse
+      - sonic-visualiser
+      - musescore
+      - lilypond
+      - cardinal
+      - chuck
+      - foxdot
+      - pd
+      - sonic-pi
+      - supercollider
+      - adljack
+      - adlplug
+      - zynaddsubfx
+      - furnace
+      - calf
+      - easyeffects
+      - guitarix

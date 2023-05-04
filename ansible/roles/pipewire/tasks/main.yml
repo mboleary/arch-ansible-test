@@ -1,0 +1,17 @@
+---
+# tasks file for pipewire
+
+- name: Install pipewire packages
+  pacman:
+    name:
+      - pipewire
+      - pipewire-docs
+      - wireplumber
+      - qpwgraph
+      - pipewire-audio
+      - pipewire-alsa
+      - pipewire-pulse
+      - pipewire-jack
+      # - pipewire-zeroconf
+
+# - name: Enable Pipewire Service
