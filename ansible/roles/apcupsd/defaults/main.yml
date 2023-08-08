@@ -1,0 +1,3 @@
+---
+# defaults file for apcupsd
+apcupsd_device: usb

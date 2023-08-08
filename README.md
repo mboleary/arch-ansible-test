@@ -76,3 +76,4 @@ This collection is meant to broadly configure a bootstrapped system, meaning tha
 
 - To run provisioning steps on the same machine as the one running the ansible playbook, append `--connection=local` to the cli parameters
 - To run provisioning as another user, append `--user=<username>` to the cli parameters
+- To supply a password for sudo authentication, append `--ask-become-pass` to the cli parameters

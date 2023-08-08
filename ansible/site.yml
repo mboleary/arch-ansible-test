@@ -80,6 +80,14 @@
   roles:
     - pro_audio
 
+- name: Install UPS software
+  hosts: ups
+  become: true
+  tags:
+    - ups
+  roles:
+    - apcupsd
+
 - name: Run updates
   hosts: all
   become: true

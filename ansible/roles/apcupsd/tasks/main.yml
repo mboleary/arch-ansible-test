@@ -1,0 +1,24 @@
+---
+# tasks file for apcupsd
+
+- name: Install apcupsd
+  pacman:
+    name:
+      - apcupsd
+
+- name: Configure apcupsd for USB
+  when: "apcupsd_device == 'usb'"
+  lineinfile:
+    path: /etc/apcupsd/apcupsd.conf
+    regexp: '^(DEVICE .*)'
+    backup: true
+    backrefs: true
+    firstmatch: true
+    state: present
+    line: '# \1'
+
+- name: Start apcupsd service
+  systemd:
+    enabled: true
+    state: started
+    name: apcupsd.service
