@@ -37,6 +37,7 @@
       - reflector
       - wget
       - usbutils
+      - inetutils
       ## Needed to install aur helper later
       - base-devel
 
