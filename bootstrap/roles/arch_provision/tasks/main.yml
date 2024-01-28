@@ -38,6 +38,7 @@
       - wget
       - usbutils
       - inetutils
+      - bash-completion
       ## Needed to install aur helper later
       - base-devel
 
