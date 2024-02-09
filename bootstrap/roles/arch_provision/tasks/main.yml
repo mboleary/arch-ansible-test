@@ -39,6 +39,7 @@
       - usbutils
       - inetutils
       - bash-completion
+      - pacman-contrib
       ## Needed to install aur helper later
       - base-devel
 
