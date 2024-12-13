@@ -8,3 +8,8 @@
   import_role:
     name: "x11"
   when: "display_server == 'x11'"
+
+# - name: Install the wayland packages
+#   import_role:
+#     name: "wayland"
+#   when: "display_server == 'wayland'"

@@ -31,7 +31,7 @@ Before the playbook can be run on a fresh system, the following must be done:
 
 1. Run `ssh-copy-id root@<hostname>` to copy the ssh keys to the host
 
-2. Open `site.yml` (or other equivalent place) and edit the configuration for the new machine. Details on this configuration may be found in the docs
+2. Open `hosts.yml` (or other equivalent place) and edit the configuration for the new machine. Details on this configuration may be found in the docs
 
 3. Run the following command, which WILL ERASE DATA ON THE DISK!
 ```sh

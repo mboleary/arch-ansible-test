@@ -1,7 +1,7 @@
 # Mounts disks using the cryptlvm flow
 
 - name: Mount the root partition
-  mount:
+  ansible.posix.mount:
     state: mounted
     src: "{{ cryptlvm_root_mapper }}"
     path: "{{ rootfs_mountpoint }}"
@@ -14,7 +14,7 @@
     recurse: yes
 
 - name: Mount the ESP
-  mount:
+  ansible.posix.mount:
     state: mounted
     src: "{{ cryptlvm_esp_device }}"
     path: "{{ rootfs_mountpoint }}/boot"
@@ -27,7 +27,7 @@
     recurse: yes
 
 - name: Mount the home partition
-  mount:
+  ansible.posix.mount:
     state: mounted
     src: "{{ cryptlvm_home_mapper }}"
     path: "{{ rootfs_mountpoint }}/home"

@@ -7,7 +7,11 @@
   roles: 
     - aur_helper
     - network_manager_config
-    - avahi
+    # - avahi
+    - firewall
+    - vmhost
+    - wireguard
+    - logging
 
 - name: Configure Users
   hosts: all
@@ -34,11 +38,12 @@
   tags:
     - graphical
   roles:
+    - alsa
+    - pipewire
     - meta_display_server
     - meta_display_manager
     - meta_desktop_environment
-    - pulseaudio
-    - alsa
+    - meta_web_browser
 
 - name: Configure Multimedia system
   hosts: kodi
@@ -48,7 +53,7 @@
   roles:
     - driver_amdgpu
     - kodi
-    - pulseaudio
+    - pipewire
     - meta_display_server
     - meta_display_manager
     - meta_desktop_environment
@@ -64,7 +69,7 @@
     - meta_display_server
     - meta_display_manager
     - meta_desktop_environment
-    - pulseaudio
+    - pipewire
     - alsa
     - meta_games
     - meta_web_browser

@@ -16,7 +16,7 @@
       - e2fsprogs
       - exfat-utils
       - iproute2
-      - dhcpcd
+      # - dhcpcd
       - grub
       - efibootmgr
       - networkmanager
@@ -41,6 +41,7 @@
       - bash-completion
       - pacman-contrib
       - openbsd-netcat
+      - power-profiles-daemon
       ## Needed to install aur helper later
       - base-devel
 
