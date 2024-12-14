@@ -9,7 +9,7 @@
       - ladspa-plugins
       - dssi-plugins
       - vst-plugins
-      - qjackctl
+      # - qjackctl # conflict with pipewire-jack
       - lmms
       - ardour
       - audacity
@@ -21,9 +21,9 @@
       - lilypond
       - cardinal
       - chuck
-      - foxdot
+      # - foxdot
       - pd
-      - sonic-pi
+      # - sonic-pi
       - supercollider
       - adljack
       - adlplug
